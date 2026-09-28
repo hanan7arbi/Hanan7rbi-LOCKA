@@ -1,11 +1,11 @@
-
 :root {
-    --primary-color: #0f2c59; /* Royal Blue */
-    --secondary-color: #1b4985;
+    --primary-color: #0f2c59;
     --bg-color: #f4f7f6;
     --card-bg: #ffffff;
     --text-color: #333333;
+    --text-muted: #666666;
     --border-color: #eef2f5;
+    --accent-color: #28a745;
 }
 
 * {
@@ -22,102 +22,131 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 20px 10px;
 }
 
-/* الحاوية الرئيسية للتطبيق */
-.app-container, .container {
+.app-container {
     width: 100%;
-    max-width: 600px; /* عرض متناسق جداً ومريح للعين على الماك بوك */
+    max-width: 650px;
     background-color: var(--card-bg);
     border-radius: 20px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     padding: 24px;
-    margin: 0 auto;
 }
 
-/* الضبط الأساسي للصور والأيقونات لمنع تضخمها */
-img, svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-/* تحكم دقيق بأيقونات الكروت */
-.card img, .card svg, .grid-menu img {
-    width: 50px !important;
-    height: 50px !important;
-    object-fit: contain;
+.welcome-title {
+    color: var(--primary-color);
+    font-size: 1.6rem;
     margin-bottom: 12px;
 }
 
-/* شبكة الكروت (حجز لوكر / عرض الخريطة) */
-.grid-menu, .cards-container {
+.search-bar {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    background-color: #f9fbfd;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.grid-menu {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin: 20px 0 30px 0;
+    margin-bottom: 24px;
 }
 
 .card {
     background-color: #f8fafd;
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 20px 12px;
+    padding: 20px;
     text-align: center;
     text-decoration: none;
     color: var(--primary-color);
     font-weight: 600;
-    font-size: 0.95rem;
-    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s;
 }
 
 .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 14px rgba(15, 44, 89, 0.1);
 }
 
-/* شريط البحث */
-input[type="text"], .search-bar {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid var(--border-color);
-    background-color: #f9fbfd;
-    border-radius: 12px;
-    margin-top: 10px;
-    outline: none;
-    font-size: 0.9rem;
+.card-icon {
+    width: 40px;
+    height: 40px;
+    stroke: var(--primary-color);
 }
 
-/* قسم الحجوزات القائمة */
+.section-title {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
 .booking-card {
     background-color: #f8fafd;
     border: 1px solid var(--border-color);
     border-radius: 14px;
     padding: 16px;
-    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* شريط التنقل السفلي وأيقوناته */
-.nav-bar, .bottom-nav {
+.booking-details p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.badge-active {
+    background-color: #e6f4ea;
+    color: var(--accent-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.bottom-nav {
     display: flex;
     justify-content: space-around;
-    align-items: center;
     padding-top: 16px;
     border-top: 1px solid var(--border-color);
     margin-top: 24px;
 }
 
-.nav-item img, .nav-item svg {
-    width: 24px !important;
-    height: 24px !important;
+.nav-item {
+    text-decoration: none;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
 }
 
-/* التجاوب مع الجوال */
+.nav-item.active {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.nav-icon {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+}
+
 @media (max-width: 600px) {
-    .app-container, .container {
+    .app-container {
         border-radius: 0;
         box-shadow: none;
         padding: 16px;
