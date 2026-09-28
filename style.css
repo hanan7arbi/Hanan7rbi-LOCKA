@@ -1,18 +1,18 @@
 
 :root {
-    --primary-color: #0f2c59; 
+    --primary-color: #0f2c59; /* Royal Blue */
     --secondary-color: #1b4985;
     --bg-color: #f4f7f6;
     --card-bg: #ffffff;
     --text-color: #333333;
-    --accent-color: #28a745;
+    --border-color: #eef2f5;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
@@ -26,106 +26,100 @@ body {
     padding: 20px 10px;
 }
 
-/* الحاوية الرئيسية تمتد بمرونة لجميع الشاشات */
+/* الحاوية الرئيسية للتطبيق */
 .app-container, .container {
     width: 100%;
-    max-width: 900px; /* العرض المثالي للشاشات الكبيرة */
+    max-width: 600px; /* عرض متناسق جداً ومريح للعين على الماك بوك */
     background-color: var(--card-bg);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     padding: 24px;
     margin: 0 auto;
 }
 
-/* الهيدر وعناوين الصفحة */
-header {
-    margin-bottom: 20px;
+/* الضبط الأساسي للصور والأيقونات لمنع تضخمها */
+img, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
-h1, h2 {
-    color: var(--primary-color);
+/* تحكم دقيق بأيقونات الكروت */
+.card img, .card svg, .grid-menu img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain;
     margin-bottom: 12px;
 }
 
-/* شريط البحث */
-.search-bar {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    outline: none;
-}
-
-/* شبكة الخيارات - تتكيف حسب حجم الشاشة */
-.grid-menu {
+/* شبكة الكروت (حجز لوكر / عرض الخريطة) */
+.grid-menu, .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-bottom: 24px;
+    margin: 20px 0 30px 0;
 }
 
 .card {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
-    padding: 20px;
+    background-color: #f8fafd;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px 12px;
     text-align: center;
-    cursor: pointer;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(15, 44, 89, 0.15);
+    box-shadow: 0 6px 14px rgba(15, 44, 89, 0.1);
 }
 
-.card-icon {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 8px;
-}
-
-/* قسم الحجوزات */
-.booking-section {
-    background-color: #f8f9fa;
+/* شريط البحث */
+input[type="text"], .search-bar {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    background-color: #f9fbfd;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 20px;
-    border-right: 4px solid var(--primary-color);
+    margin-top: 10px;
+    outline: none;
+    font-size: 0.9rem;
 }
 
-/* شريط التنقل السفلي */
-.nav-bar {
+/* قسم الحجوزات القائمة */
+.booking-card {
+    background-color: #f8fafd;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px;
+    margin-top: 10px;
+}
+
+/* شريط التنقل السفلي وأيقوناته */
+.nav-bar, .bottom-nav {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding-top: 16px;
-    border-top: 1px solid #eee;
-    margin-top: 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 24px;
 }
 
-.nav-item {
-    color: #666;
-    text-decoration: none;
-    font-size: 0.9rem;
-    text-align: center;
+.nav-item img, .nav-item svg {
+    width: 24px !important;
+    height: 24px !important;
 }
 
-.nav-item.active {
-    color: var(--primary-color);
-    font-weight: bold;
-}
-
-/* التجاوب التلقائي للشاشات الصغرى (الجوال) */
+/* التجاوب مع الجوال */
 @media (max-width: 600px) {
     .app-container, .container {
-        padding: 16px;
         border-radius: 0;
         box-shadow: none;
-    }
-    
-    .grid-menu {
-        grid-template-columns: 1fr 1fr;
+        padding: 16px;
     }
 }
